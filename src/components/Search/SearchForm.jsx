@@ -26,6 +26,4 @@ export default function SearchForm({ onSubmit }) {
         Search
       </FormButton>
     </form>);
-
-
 }
