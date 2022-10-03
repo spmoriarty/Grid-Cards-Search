@@ -6,11 +6,9 @@ import { search } from '../../services/pokedex.js';
 
 export default function Search() {
   const {
-    infinScrollRef,
+    infiniteScrollRef,
     nextPage,
-    // searchParams,
     searchResults,
-    // searchPokedex,
   } = useSearchResults();
 
 
@@ -18,7 +16,7 @@ export default function Search() {
     <SearchForm 
       onSubmit={search} />
     <SearchResults results={searchResults} 
-      infinScrollRef={infinScrollRef}/> 
+      infiniteScrollRef={infiniteScrollRef}/> 
     <FormButton onClick={nextPage}>next</FormButton> 
   </section>;
 }

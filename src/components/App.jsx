@@ -13,6 +13,7 @@ import Users from '../components/Users/Users.jsx';
 import Auth from '../components/Auth/Auth.jsx';
 import AuthForm from '../components/Auth/AuthForm.jsx';
 import Search from '../components/Search/Search.jsx';
+import Layout from '../components/Page/Layout.jsx';
   
 export default function App() {
   return (
