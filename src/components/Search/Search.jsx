@@ -1,13 +1,13 @@
 import SearchForm from './SearchForm.jsx';
 import SearchResults from './SearchResults.jsx';
 import useSearchResults from '../../hooks/use-search-results.js';
-import { FormButton } from '../Forms/FormControls';
+// import { FormButton } from '../Forms/FormControls';
 import { search } from '../../services/pokedex.js';
 
 export default function Search() {
   const {
     infiniteScrollRef,
-    nextPage,
+    // nextPage,
     searchResults,
   } = useSearchResults();
 
@@ -17,6 +17,6 @@ export default function Search() {
       onSubmit={search} />
     <SearchResults results={searchResults} 
       infiniteScrollRef={infiniteScrollRef}/> 
-    <FormButton onClick={nextPage}>next</FormButton> 
+    {/* <FormButton onClick={nextPage}>next</FormButton>  */}
   </section>;
 }
