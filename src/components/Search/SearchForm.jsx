@@ -1,6 +1,6 @@
 import React from 'react';
-import { InputController, FormButton } from '../Forms/FormController.jsx';
-import useSearchForm from '../../hooks/use-search-form.js';
+import { InputController, FormButton } from '../Forms/FormControls.jsx';
+import useSearchForm from './SearchForm.jsx';
 import styles from './Search.css';
 
 

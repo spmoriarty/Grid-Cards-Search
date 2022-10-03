@@ -1,5 +1,5 @@
 import classnames from 'classnames';
-import styles from './FormController.css';
+import styles from './FormControls.css';
 
 export function FormController({ label, children }) {
   const className = classnames(styles.FormController, styles.LabelText);
