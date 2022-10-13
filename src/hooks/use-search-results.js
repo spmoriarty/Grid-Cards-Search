@@ -11,7 +11,7 @@ export default function useSearchResults() {
   const useableSearchParams = Object.fromEntries(searchParams.entries());
 
   const nextPage = async () => {
-    useableSearchParams.page = parseInt(useableSearchParams.page) + 1;
+    useableSearchParams.page = parseInt(useableSearchParams.page || 1) + 1;
     setSearchParams(useableSearchParams);
     const moreResults = await search(useableSearchParams);
     setSearchResults(searchResults.concat(moreResults.results));
@@ -33,7 +33,7 @@ export default function useSearchResults() {
       const body = await search(searchObj);
       setSearchResults(body.results);
     } catch(e) {
-      console.log(e);
+      // console.log(e);
       setError('Error' + e.toString());
     }
   };

@@ -2,23 +2,22 @@ import SearchForm from './SearchForm.jsx';
 import SearchResults from './SearchResults.jsx';
 import useSearchResults from '../../hooks/use-search-results.js';
 import { FormButton } from '../Forms/FormControls';
-import { search } from '../../services/pokedex.js';
+
 
 export default function Search() {
   const {
-    infinScrollRef,
+    infiniteScrollRef,
     nextPage,
-    // searchParams,
+    searchPokedex,
     searchResults,
-    // searchPokedex,
   } = useSearchResults();
 
 
   return <section>
     <SearchForm 
-      onSubmit={search} />
+      onSubmit={searchPokedex} />
     <SearchResults results={searchResults} 
-      infinScrollRef={infinScrollRef}/> 
+      infiniteScrollRef={infiniteScrollRef}/> 
     <FormButton onClick={nextPage}>next</FormButton> 
   </section>;
 }

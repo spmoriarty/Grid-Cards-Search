@@ -5,6 +5,9 @@ const HtmlPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 
+// Part of a series of settings to allow use of process.env in the web. See also
+// the resolve -> alias setting in this file, the ProvidePlugin usage in this
+// file, and the added process package.
 const env = Object.entries({
   ...require('dotenv').config(),
   ...process.env,
@@ -15,7 +18,6 @@ const env = Object.entries({
 
 // eslint-disable-next-line
 module.exports = {
-  mode: 'production',
   entry: './src/index.jsx',
   output: {
     filename: 'bundle.[hash].js',
@@ -25,6 +27,9 @@ module.exports = {
   devServer: {
     port: 7891,
     historyApiFallback: true,
+    proxy: {
+      '/api': 'http://localhost:7890',
+    },
   },
   plugins: [
     new HtmlPlugin({ template: './src/index.html' }),
@@ -33,11 +38,21 @@ module.exports = {
     new CopyPlugin({
       patterns: [{ from: 'public' }],
     }),
+    // Bring this in to allow use of process.env in the web. See also the
+    // resolve -> alias setting in this file, dotenv usage in this file, and
+    // the added process package.
     new webpack.ProvidePlugin({
+      process: 'process/browser',
       React: 'react',
     }),
   ],
   resolve: {
+    alias: {
+      // Use this to allow use of process.env in the web. See also the
+      // ProvidePlugin usage in this file, dotenv usage in this file, and the
+      // added process package.
+      process: 'process/browser',
+    },
     extensions: ['.js', '.jsx'],
   },
   module: {
@@ -62,7 +77,9 @@ module.exports = {
             loader: 'css-loader',
             options: {
               sourceMap: true,
-              modules: true,
+              modules: {
+                localIdentName: '[name]__[local]__[hash:base64:5]',
+              },
               importLoaders: 1,
             },
           },
