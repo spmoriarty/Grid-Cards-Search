@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import classnames from 'classnames';
 import styles from './FormControls.css';
 
@@ -50,6 +51,6 @@ export function CheckBoxController({ legend, label, ...rest }) {
   );
 }
 
-export function FormButton({ children }) {
-  return <button className={styles.FormButton}>{children}</button>;
+export function FormButton({ children, onClick }) {
+  return <button onClick={onClick} className={styles.FormButton}>{children}</button>;
 }
