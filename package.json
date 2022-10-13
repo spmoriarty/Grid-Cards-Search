@@ -16,7 +16,8 @@
   "dependencies": {
     "classnames": "^2.3.2",
     "dotenv-webpack": "^8.0.1",
-    "lint": "^0.7.0",
+    "lint": "^1.1.2",
+    "process": "^0.11.10",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-intersection-observer": "^9.4.0",
